@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Coders | Survey Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1 id="title">Dark Coders</h1>
+      <p id="description">Join the World Top Coders &amp; Hackers</p>
+    </header>
+    <div class="main-content">
+      <div class="form-container">
+        <form id="survey-form">
+          <div class="form-content">
+            <div class="form-col">
+              <label for="name" id="name-label">Name</label><br>
+              <input type="text" name="name" id="name" placeholder="Enter your Name" required>
+            </div>
+            <div class="form-col">
+              <label for="email" id="email-label">Email</label><br>
+              <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+            </div>
+            <div class="form-col">
+              <label for="number" id="number-label">Age</label><br>
+              <input type="number" name="age" id="number" min="16" max="80" placeholder="Enter your age">
+            </div>
+            <div class="form-col">
+              <label for="phone" id="phone-label">Phone</label><br>
+              <input type="number" name="phone" id="phone" placeholder="Enter your phone Number">
+            </div>
+            <div class="form-col">
+              <label>Gender:</label> <br>
+              <label for="gender-male" >Male</label>
+              <input type="radio" name="gender" id="gender-male" value="male">
+              <label for="gender-female" >Female</label>
+              <input type="radio" name="gender" id="gender-female" value="female">
+            </div>
+            <div class="form-col">
+              <label for="dropdown">Specialization</label><br>
+              <select name="specialization" id="dropdown">
+                <option value="webdev">Web Development</option>
+                <option value="androdev">Android Development</option>
+                <option value="pentest">Penetration Testing</option>
+                <option value="appsec">Application / Web Security</option>
+                <option value="exploitdev">Exploit Development</option>
+                <option value="malware">Malware Analysis</option>
+                <option value="crypto">Cryptography</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+            <div class="form-col">
+              <fieldset>
+                <legend>Additional Skills</legend>
+                <label for="add-ml">Machine Learning</label>
+                <input type="checkbox" name="additional" value="ml" id="add-ml">
+                <label for="add-web3">Web3</label>
+                <input type="checkbox" name="additional" value="web3" id="add-web3">
+                <label for="add-net">Networking</label>
+                <input type="checkbox" name="additional" value="net" id="add-net">
+              </fieldset>
+            </div>
+            <div class="form-col">
+              <label for="years">Years of Experience</label><br>
+              <input type="number" name="years" id="years" min="1">
+            </div>
+            <div class="form-col" id="msg-box">
+              <label for="msg">Message</label><br>
+              <textarea name="comment" id="msg" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-col" id="submit-btn">
+              <input type="submit" value="Submit" id="submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer>
+    copyrights &copy; 2022 Dark Coders
+  </footer>
+</body>
+</html>

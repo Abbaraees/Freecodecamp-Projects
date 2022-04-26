@@ -1,0 +1,86 @@
+body {
+    background-color:honeydew;
+    margin: 0;
+}
+main {
+    display: flex;
+    flex-direction: column;
+}
+header {
+    color: honeydew;
+    background-color: #1b4423;
+    text-align: center;
+}
+
+.form-container {
+    width: 55%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.form-content {
+    width: 100%;
+    padding-left: 10px;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(7, 100px);
+    grid-template-areas: 
+    "name email"
+    "age phone"
+    "gender spec"
+    "add yeaars"
+    "msg msg"
+    "msg msg"
+    "submit submit"
+    ;
+    justify-items: center;
+    align-items: center;
+    padding-top: 20px;
+    background-color: #069A2E;   
+}
+
+.form-col {
+    align-content: center;
+    width: 100%;
+    color: honeydew;
+    font-size: 18px;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+.form-col input[type=text], 
+.form-col input[type=number],
+.form-col input[type=email],
+.form-col select {
+    width: 90%;
+    background-color: honeydew;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+#msg-box {
+    grid-area: msg;
+}
+
+#msg-box textarea{
+    width: 98%;
+}
+
+#submit-btn {
+    grid-area: submit;
+    height: 100px;
+    margin-left: 90%;
+}
+
+#submit-btn input {
+    height: 50px;
+}
+
+footer {
+    color: honeydew;
+    background-color: #1b4423;
+    text-align: center;
+    padding: 5px;
+    font-style: italic;
+}
