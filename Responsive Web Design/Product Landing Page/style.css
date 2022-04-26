@@ -1,0 +1,173 @@
+body {
+    background-color: #EEEEEE;
+    margin: 0;
+}
+main {
+    display: flex;
+    flex-direction: column;
+}
+header {
+     width: 100%; 
+    height: auto;
+    background-color: #2A6099;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+
+}
+.logo-container img {
+    width: 100px;
+    height: 80px;
+    margin: 5px;
+}
+.nav-container {
+    margin-right: 10%;
+}
+.nav-container nav {
+    padding-top: 35px;
+}
+.nav-container nav a {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.hero-container {
+     width: 100%; 
+    padding: 5px;
+    margin-top: 95px;
+}
+.hero-container img {
+    width: 80%;
+    height: 34vw;
+    display: block;
+    margin:0 auto;
+    border: 2px solid #2A6099;
+}
+.hero-container iframe {
+    width: 80%;
+    height: 33vw;
+    margin: 0 auto;
+    display: block;
+}
+.subscribe-container {
+    height: auto;
+    background-color: #2A6099;
+    padding:10px 0 10px 35% ;
+}
+.subscribe-container form {
+    display: block;
+    margin: 0 auto;
+}
+.subscribe-container form input {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 40px;
+}
+.subscribe-container form input[type=submit] {
+    background-color: #FFBF00;
+    border: 2px solid #FFBF11;
+    border-radius: 5px;
+    color: #2A6099;
+    font-weight: bold;
+}
+.section-container {
+    /* width: 100%; */
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    column-gap: 20px;
+}
+.section-container figure {    
+    margin: 0;
+}
+.section-container figcaption {
+    padding: 10px;
+    text-align: center;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+.section-container img {
+    width: 100%;
+    height: 25vw;
+}
+
+
+.service {
+    border: 2px solid #2A6099;
+    color: white;
+}
+.service figure {
+    background-color: #2A6099;
+}
+
+#prices {
+    background-color: #2A6099;
+}
+.price {
+    background-color: #FFBF00;
+    /* border: 2px solid #FFBF00; */
+}
+.price figure .price figcaption{
+    background-color: #FFBF00;
+    color: black;
+}
+.price a {
+    color: #2A6099;
+    text-decoration: none;
+}
+
+.testimony figure {
+    background-color: #2A6099;
+    color: #EEEEEE;
+}
+.testimony p {
+    text-align: center;
+    padding: 0 5px 5px 5px;
+}
+.testimony img{
+    width: 90%;
+    border: 3px solid #FFBF00;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+footer {
+    text-align: center;
+    background-color: #2A6099;
+    padding: 5px;
+    color: #EEEEEE;
+}
+
+@media  (max-width: 400px) {
+    .nav-container {
+        margin-right: 0;
+    }
+    .section-container {
+        /* width: 100%; */
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        row-gap: 10px;
+    }
+    .hero-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin:0 auto;
+        border: 2px solid #2A6099;
+    }
+    .subscribe-container {
+        height: auto;
+        background-color: #2A6099;
+        padding:10px;
+    }
+    .subscribe-container form input {
+        padding-left: 1px;
+    }
+}
