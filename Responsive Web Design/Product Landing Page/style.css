@@ -142,7 +142,9 @@ footer {
     padding: 5px;
     color: #EEEEEE;
 }
-    .nav-container {
+
+@media (max-width: 500px)  {
+  .nav-container {
         margin-right: 0;
     }
     .section-container {

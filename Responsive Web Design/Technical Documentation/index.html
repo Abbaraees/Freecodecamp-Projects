@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Injection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="main-doc"> 
+    <div id="nav-container">
+      <nav id="navbar">
+        <header>
+          <h1>SQL Injection</h1>
+        </header>
+        <ul>
+          <li><a href="#introduction" class="nav-link">Introduction</a></li>
+          <li><a href="#How_SQL_injection_Works" class="nav-link">How SQL injection Works</a></li>
+          <li><a href="#Threat_Modeling" class="nav-link">Threat Modeling</a></li>
+          <li><a href="#examples" class="nav-link">Examples</a></li>
+          <li><a href="#How_To_Detect_SQL_Injection" class="nav-link">How To Detect SQL Injection</a></li>
+          <li><a href="#How_to_prevent_SQL_injection" class="nav-link">How To Prevent SQL Injection</a></li>
+          <li><a href="#REFRENCE" class="nav-link">Refrence</a></li>
+        </ul>
+      </nav>
+    </div>
+      <section class="main-section" id="introduction">
+        <header>
+          <h2>Introduction</h2>
+        </header>
+        <p>
+          A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from 
+          the client to the application. A successful SQL injection exploit can read sensitive data from the 
+          database, modify database data (Insert/Update/Delete), execute administration operations on the 
+          database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file 
+          system and in some cases issue commands to the operating system. SQL injection attacks are a type of 
+          injection attack, in which SQL commands are injected into data-plane input in order to affect the 
+          execution of predefined SQL commands.
+        </p>
+      </section>
+      <section class="main-section" id="How_SQL_injection_Works">
+        <header>
+          <h2>How SQL Injection Works</h2>
+        </header>
+        <p>The primary form of SQL injection consists of direct insertion of code into user-input variables that 
+        are concatenated with SQL commands and executed. A less direct attack injects malicious code into 
+        strings that are destined for storage in a table or as metadata. When the stored strings are subsequently 
+        concatenated into a dynamic SQL command, the malicious code is executed.</p>
+        <p>The injection process works by prematurely terminating a text string and appending a new command. 
+        Because the inserted command may have additional strings appended to it before it is executed, 
+        the malefactor terminates the injected string with a comment mark "--". Subsequent text is ignored at 
+        execution time.</p>
+      </section>
+      <section class="main-section" id="Threat_Modeling">
+        <header>
+          <h2>Threat Modeling</h2>
+        </header>
+        <ul>
+          <li>SQL injection attacks allow attackers to spoof identity, tamper with existing data, cause 
+            repudiation issues such as voiding transactions or changing balances, allow the complete 
+            disclosure of all data on the system, destroy the data or make it otherwise unavailable, 
+            and become administrators of the database server.</li>
+          <li>SQL Injection is very common with PHP and ASP applications due to the prevalence of older 
+            functional interfaces. Due to the nature of programmatic interfaces available, J2EE and ASP.NET 
+            applications are less likely to have easily exploited SQL injections.</li>
+          <li>The severity of SQL Injection attacks is limited by the attacker’s skill and imagination,
+             and to a lesser extent, defense in depth countermeasures, such as low privilege connections 
+             to the database server and so on. In general, consider SQL Injection a high impact severity.</li>
+        </ul>
+      </section>
+      <section class="main-section" id="examples">
+        <header>
+          <h2>Examples</h2>
+        </header>
+        <section>
+          <h4>Example 1</h4>
+          <p>In SQL: select id, firstname, lastname from authors</p>
+          <p>If one provided: Firstname: evil'ex and Lastname: Newman</p>
+          <p>the query string becomes:</p>
+          <code>select id, firstname, lastname from authors where firstname = 'evil'ex' and lastname ='newman'</code>
+          <p>which the database attempts to run as:
+          Incorrect syntax near il' as the database tried to execute evil.</p>
+        </section>
+        <section>
+          <h4>Example 2</h4>
+          <p>Consider an application that lets users log in with a username and password. If a user submits the username wiener and the password bluecheese, the application checks the credentials by performing the following SQL query:</p>
+          <code>SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'</code>
+          <p>If the query returns the details of a user, then the login is successful. Otherwise, it is rejected.</p>
+          <p>Here, an attacker can log in as any user without a password simply by using the SQL comment sequence -- to remove the password check from the WHERE clause of the query. For example, submitting the username administrator'-- and a blank password results in the following query:</p>
+          <code>SELECT * FROM users WHERE username = 'administrator'--' AND password = ''</code>
+          <p>This query returns the user whose username is administrator and successfully logs the attacker in as that user.</p>
+        </section>
+      </section>
+      <section class="main-section" id="How_To_Detect_SQL_Injection">
+        <header>
+          <h2>How to Detect SQL Injection</h2>
+        </header>
+        <p>The majority of SQL injection vulnerabilities can be found quickly and reliably using Burp Suite's web vulnerability scanner.</p>
+          <p>SQL injection can be detected manually by using a systematic set of tests against every entry point in the application. This typically involves:</p>
+          <ul>
+            <li>Submitting the single quote character ' and looking for errors or other anomalies.</li>
+            <li>Submitting some SQL-specific syntax that evaluates to the base (original) value of the entry point, and to a different value, and looking for systematic differences in the resulting application responses.</li>
+            <li>Submitting Boolean conditions such as OR 1=1 and OR 1=2, and looking for differences in the application's responses.</li>
+            <li>Submitting payloads designed to trigger time delays when executed within an SQL query, and looking for differences in the time taken to respond.</li>
+            <li>Submitting OAST payloads designed to trigger an out-of-band network interaction when executed within an SQL query, and monitoring for any resulting interactions.</li>
+          </ul>  
+      </section>
+      <section class="main-section" id="How_to_prevent_SQL_injection">
+        <header>
+          <h2>How to Prevent SQL Injection</h2>
+        </header>
+        <p>Most instances of SQL injection can be prevented by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.</p>
+        <p>The following code is vulnerable to SQL injection because the user input is concatenated directly into the query:</p>
+        <code>
+          String query = "SELECT * FROM products WHERE category = '"+ input + "'";
+          Statement statement = connection.createStatement();
+          ResultSet resultSet = statement.executeQuery(query);
+        </code>
+        <p>This code can be easily rewritten in a way that prevents the user input from interfering with the query structure:</p>
+        <code>
+          PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE category = ?");
+          statement.setString(1, input);
+          ResultSet resultSet = statement.executeQuery();
+        </code>
+      </section>
+      <section class="main-section" id="REFRENCE">
+        <header>
+          <h2>Refrence</h2>
+        </header>
+        <ul>
+          <li><a href="https://portswigger.net/web-security/sql-injection">Portswigger Web Security Academy</a></li>
+          <li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-injection?view=sql-server-ver15">Microsoft Docs</a></li>
+          <li><a href="https://owasp.org/www-community/attacks/SQL_Injection">OWASP Foundation | SQL Injection</a></li>
+        </ul>
+      </section>
+  </main>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
